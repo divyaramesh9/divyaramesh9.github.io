@@ -1,7 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <header>
+        <nav>
+            <div class="logo">Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Hi, I'm <span class="highlight">Divya</span></h1>
+                <h2>Computer Science Masters Student, NLP Researcher</h2>
+                <p>I'm building scalable systems and exploring AI applications in mental health and NLP</p>
+                <div class="cta-buttons">
+                    <a href="projects.html" class="btn primary">View My Work</a>
+                    <a href="contact.html" class="btn secondary">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; 2026 Divya Ramesh. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
