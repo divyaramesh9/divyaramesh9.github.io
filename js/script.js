@@ -3,28 +3,32 @@ const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 const links = document.querySelectorAll('.nav-links li');
 
-hamburger.addEventListener('click', () => {
-    // Toggle navigation
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
-    
-    // Animate links
-    links.forEach((link, index) => {
-        if (link.style.animation) {
-            link.style.animation = '';
-        } else {
-            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-        }
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        // Toggle navigation
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+        
+        // Animate links
+        links.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            }
+        });
     });
-});
+}
 
 // Close mobile menu when a link is clicked
-links.forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        hamburger.classList.remove('active');
+if (hamburger && navLinks) {
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
     });
-});
+}
 
 // Add active class to current page link
 const currentLocation = location.href;
@@ -63,7 +67,7 @@ const animateOnScroll = () => {
         const elementTop = element.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
         
-        if (elementTop < windowHeight - 100) {
+        if (elementTop < windowHeight) {
             element.style.opacity = '1';
             element.style.transform = 'translateY(0)';
         }
@@ -81,6 +85,7 @@ window.addEventListener('load', () => {
     });
     
     // Trigger initial animation
+    animateOnScroll();
     setTimeout(animateOnScroll, 300);
 });
 
