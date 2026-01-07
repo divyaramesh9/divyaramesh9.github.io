@@ -361,6 +361,15 @@ body.home .cta-buttons .btn:hover {
         padding: 6rem 0 2rem;
     }
 
+    .hero .container {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    body.home .hero .container {
+        padding: 2rem;
+    }
+
     .hero-content {
         padding-right: 0;
         margin-bottom: 3rem;
@@ -436,6 +445,33 @@ body.home .cta-buttons .btn:hover {
 
     .hamburger.active .line:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .hero {
+        padding: 7rem 0 2rem;
+    }
+
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+
+    .hero h2 {
+        font-size: 1.35rem;
+    }
+
+    .hero p {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body.home .hero .container {
+        padding: 1.5rem;
+    }
+
+    .profile-photo {
+        width: 200px;
+        height: 200px;
     }
 }
 
