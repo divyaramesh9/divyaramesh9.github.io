@@ -75,7 +75,8 @@
                     <div style="text-align: left; margin-bottom: 2rem;">
                         <h2>Send Me a Message</h2>
                     </div>
-                    <form id="contactForm" class="contact-form">
+                    <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="adc9b9bf-ce81-42bc-95c0-79884e3428b2">
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" class="form-control" required>

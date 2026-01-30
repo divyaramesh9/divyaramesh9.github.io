@@ -13,8 +13,7 @@ Visit my portfolio: [https://divyaramesh9.github.io](https://divyaramesh9.github
 - **Frontend**: HTML5, CSS3, JavaScript
 - **Styling**: Custom CSS with CSS Variables, Flexbox, Grid
 - **Icons**: Font Awesome
-- **Hosting**: GitHub Pages
-- **Design**: Responsive, Mobile-First Design
+- **Hosting**: GitHub Pages, Web3Forms (form submission)
   
 ## Ways to Contact Me
 - **Email**: divya.ramesh@columbia.edu

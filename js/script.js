@@ -95,48 +95,78 @@ window.addEventListener('scroll', animateOnScroll);
 // Form submission handling
 const contactForm = document.querySelector('.contact-form form');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         // Get form data
         const formData = new FormData(contactForm);
-        const formObject = {};
-        formData.forEach((value, key) => {
-            formObject[key] = value;
-        });
-        
-        // Here you would typically send the form data to a server
-        console.log('Form submitted:', formObject);
-        
-        // Show success message
-        const successMessage = document.createElement('div');
-        successMessage.className = 'success-message';
-        successMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-        successMessage.style.backgroundColor = '#4CAF50';
-        successMessage.style.color = 'white';
-        successMessage.style.padding = '1rem';
-        successMessage.style.borderRadius = '4px';
-        successMessage.style.marginTop = '1rem';
-        successMessage.style.textAlign = 'center';
-        
-        // Clear the form
-        contactForm.reset();
-        
-        // Remove any existing success message
-        const existingMessage = document.querySelector('.success-message');
+
+        const existingMessage = document.querySelector('.success-message, .error-message');
         if (existingMessage) {
             existingMessage.remove();
         }
-        
-        // Add the new success message
-        contactForm.appendChild(successMessage);
-        
-        // Remove the message after 5 seconds
-        setTimeout(() => {
-            successMessage.style.opacity = '0';
-            setTimeout(() => {
-                successMessage.remove();
-            }, 500);
-        }, 5000);
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.className = 'success-message';
+                successMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+                successMessage.style.backgroundColor = '#4CAF50';
+                successMessage.style.color = 'white';
+                successMessage.style.padding = '1rem';
+                successMessage.style.borderRadius = '4px';
+                successMessage.style.marginTop = '1rem';
+                successMessage.style.textAlign = 'center';
+                
+                // Clear the form
+                contactForm.reset();
+                
+                // Add the new success message
+                contactForm.appendChild(successMessage);
+                
+                // Remove the message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.opacity = '0';
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 500);
+                }, 5000);
+            } else {
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'error-message';
+                errorMessage.textContent = (data && data.message) ? data.message : 'Sorry—something went wrong. Please try again.';
+                errorMessage.style.backgroundColor = '#E53935';
+                errorMessage.style.color = 'white';
+                errorMessage.style.padding = '1rem';
+                errorMessage.style.borderRadius = '4px';
+                errorMessage.style.marginTop = '1rem';
+                errorMessage.style.textAlign = 'center';
+
+                contactForm.appendChild(errorMessage);
+            }
+        } catch (err) {
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'error-message';
+            errorMessage.textContent = 'Network error—please try again later.';
+            errorMessage.style.backgroundColor = '#E53935';
+            errorMessage.style.color = 'white';
+            errorMessage.style.padding = '1rem';
+            errorMessage.style.borderRadius = '4px';
+            errorMessage.style.marginTop = '1rem';
+            errorMessage.style.textAlign = 'center';
+
+            contactForm.appendChild(errorMessage);
+        }
     });
 }
