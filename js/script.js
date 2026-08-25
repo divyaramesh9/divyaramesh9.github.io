@@ -8,15 +8,6 @@ if (hamburger && navLinks) {
         // Toggle navigation
         navLinks.classList.toggle('active');
         hamburger.classList.toggle('active');
-        
-        // Animate links
-        links.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-            }
-        });
     });
 }
 
@@ -30,24 +21,52 @@ if (hamburger && navLinks) {
     });
 }
 
-// Add active class to current page link
-const currentLocation = location.href;
-const menuItems = document.querySelectorAll('.nav-links a');
-const menuLength = menuItems.length;
+// Scroll-spy: highlight current section in the nav
+const menuItems = document.querySelectorAll('.nav-links a[data-scrollspy]');
+const sections = Array.from(menuItems)
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
 
-for (let i = 0; i < menuLength; i++) {
-    if (menuItems[i].href === currentLocation) {
-        menuItems[i].classList.add('active');
-    }
+const setActiveNav = (hash) => {
+    menuItems.forEach(a => {
+        const href = a.getAttribute('href');
+        if (href === hash) {
+            a.classList.add('active');
+        } else {
+            a.classList.remove('active');
+        }
+    });
+};
+
+if (sections.length > 0) {
+    const observer = new IntersectionObserver(
+        (entries) => {
+            const visible = entries
+                .filter(e => e.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+            if (visible && visible.target && visible.target.id) {
+                setActiveNav(`#${visible.target.id}`);
+            }
+        },
+        {
+            root: null,
+            threshold: [0.15, 0.3, 0.5, 0.75],
+            rootMargin: '-120px 0px -60% 0px'
+        }
+    );
+
+    sections.forEach(section => observer.observe(section));
 }
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
         const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+        if (!targetId || targetId === '#') return;
+        if (!targetId.startsWith('#')) return;
+
+        e.preventDefault();
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
@@ -55,42 +74,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 top: targetElement.offsetTop - 80,
                 behavior: 'smooth'
             });
+
+            setActiveNav(targetId);
+
+            if (navLinks && hamburger) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
         }
     });
 });
-
-// Add animation on scroll
-const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.fade-in');
-    
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < windowHeight) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }
-    });
-};
-
-// Initialize animations
-window.addEventListener('load', () => {
-    // Add animation class to elements
-    const elements = document.querySelectorAll('.fade-in');
-    elements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    });
-    
-    // Trigger initial animation
-    animateOnScroll();
-    setTimeout(animateOnScroll, 300);
-});
-
-// Listen for scroll events
-window.addEventListener('scroll', animateOnScroll);
 
 // Form submission handling
 const contactForm = document.querySelector('.contact-form form');

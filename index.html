@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="css/style-new.css">
+    <title>Divya Ramesh</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/style-new.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="home">
     <header>
         <nav>
             <div class="container">
-                <a class="logo" href="index.html">Divya Ramesh</a>
+                <a class="logo" href="#about">Divya Ramesh</a>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#research" data-scrollspy>Research</a></li>
+                    <li><a href="#projects" data-scrollspy>Projects</a></li>
+                    <li><a href="#contact" data-scrollspy>Contact</a></li>
                 </ul>
                 <div class="hamburger">
                     <div class="line"></div>
@@ -26,35 +25,103 @@
                 </div>
             </div>
         </nav>
+        <div class="nav-divider"></div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Hi! I'm <span class="highlight">Divya</span></h1>
-                    <h2>Computer Science Masters Student and NLP Researcher</h2>
-                    <p>I build intelligent systems at the intersection of natural language processing, human behavior, and scalable engineering.</p>
-                    <div class="cta-buttons">
-                        <a href="projects.html" class="btn primary">Projects</a>
-                        <a href="research.html" class="btn secondary">Research</a>
-                        <a href="contact.html" class="btn secondary">Contact Me</a>
+    <main class="page">
+        <div class="container page-layout">
+            <aside class="sidebar">
+                <img src="images/headshot.png" alt="Divya Ramesh" class="sidebar-photo">
+                <div class="sidebar-name">Divya Ramesh</div>
+                <div class="sidebar-subtitle">MS CS student at Columbia University and NLP Researcher</div>
+
+                <div class="sidebar-items">
+                    <div class="sidebar-item">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span>New York, NY</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <a href="mailto:divya.ramesh@columbia.edu">email</a>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                        <a href="https://github.com/divyaramesh9" target="_blank" rel="noopener noreferrer">github</a>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <a href="https://www.linkedin.com/in/divyarmsh" target="_blank" rel="noopener noreferrer">linkedin</a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <img src="images/headshot.png" alt="Divya Ramesh" class="profile-photo">
-                </div>
-            </div>
-        </section>
-    </main>
+            </aside>
 
-    <footer>
-        <div class="social-links">
-            <a href="mailto:divya.ramesh@columbia.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/divyarmsh" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <div class="content">
+                <section id="about" class="section">
+                    <h1>About</h1>
+                    <p>
+                        Hi, I'm Divya! I'm a second year Computer Science Masters student at Columbia University, specializing in Natural Language Processing. I was previously at UCLA pursuing a dual B.A. in Psychology and English, and was inducted into the <a href="https://www.pbk.org/" target="_blank" rel="noopener noreferrer">Phi Beta Kappa</a> academic honors society.
+                    </p>
+                    <p>
+                        I've always been more interested in people rather than machines, but it turns out the two are inextricable from one another. Technological development will always center around human needs and experiences, and our experiences are being shaped by technology. 
+                        I'm determined to explore the nexus between human behavior, machine learning, and language, and to build AI systems that are human-centered, ethical, and responsible.
+                    </p>
+                    <p>
+                        In my free time, you'll find me doing <a href="https://www.nytimes.com/crosswords" target="_blank" rel="noopener noreferrer">crossword puzzles</a>, <a href="https://www.jetpunk.com/tags/geography" target="_blank" rel="noopener noreferrer">geography quizzes</a>, or on a <a href="https://nygroove.nyc/im-walkin-here-to-there-the-best-way-to-walk-the-entire-length-of-manhattan/" target="_blank" rel="noopener noreferrer">ridiculously long walk</a>.
+                    </p>
+                </section>
+
+                <section id="research" class="section">
+                    <h1>Research</h1>
+                    <ul class="simple-list">
+                        <li>
+                            <p>
+                                <strong>Speech Lab, Columbia University</strong> — I am currently a Research Assistant under <a href="https://www.cs.columbia.edu/~zgong/" target="_blank" rel="noopener noreferrer">Ziwei Gong</a> and <a href="https://www.cs.columbia.edu/~julia/" target="_blank" rel="noopener noreferrer">Prof. Julia Hirschberg</a> at the Columbia <a href="https://www.cs.columbia.edu/speech/" target="_blank" rel="noopener noreferrer">Spoken Language Processing Group</a>. Our lab is working to develop AI-powered dialogue agents using LLMs to provide accessible and democratized mental health support for individuals with limited resources, with a focus on building models that incorporate continual learning capabilities to adapt to long dialogue contexts.
+                            </p>
+                            <p>
+                                My work involves investigating the efficacy of LLMs in multicultural, therapeutic settings, specifically evaluating cultural competency in clinical contexts. I am assessing existing use cases of LLMs across diverse cultural environments and exploring how model training data composition affects effectiveness in handling culturally specific mental health scenarios. I am developing methods to evaluate and benchmark LLMs for cultural competency, working toward frameworks that can guide model selection for therapeutic applications across different cultural contexts.
+                            </p>
+                        </li>
+                        <br>
+                        <li>
+                            <p>
+                                <strong>AI Research Internship, Comcast</strong> — This summer, I worked as an AI Research Intern at Comcast, working on evaluation and retrieval systems for conversational, agentic AI products. 
+                                <p>
+                                    I designed and implemented LLM-as-a-Judge frameworks to systematically assess the output quality and performance of agentic dialogue systems, establishing scalable ways to evaluate conversational AI without relying solely on human annotation.
+                                    I also developed a pairwise learning-to-rank pipeline, using production logs and human annotations to train a RAG-based Q&A agent, and engineered features for a supervised learning re-ranking strategy that balanced broad article relevance with support for narrower, niche search queries in a document retrieval system.
+                                </p>
+                            </p>
+                        </li>
+                        
+                        
+                    </ul>
+                </section>
+
+                <section id="projects" class="section">
+                    <h1>Projects</h1>
+                    <ul class="simple-list">
+                        <li>
+                            <strong><a href="https://github.com/nlkeung/blockchain_payment_system">Decentralized P2P Payment Application</a></strong> — Built a decentralized payment platform on a custom blockchain with proof-of-work mining, enabling users to send and track payments across a P2P network without any central authority. Designed a tracker-peer architecture with multi-threaded peers handling concurrent mining, transaction validation, fork resolution, and hash-based signature verification to maintain a consistent distributed ledger.
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Speech Emotion Recognition Classifier</strong> — Built a speaker-independent emotion recognition pipeline using the INTERSPEECH 2009 openSMILE feature set (384 features) with per-speaker Z-score normalization across 7 speakers and 15 emotion classes. Trained a Random Forest classifier with Leave-One-Group-Out cross-validation, achieving ~4x above-chance accuracy on a challenging 15-class speaker-independent task, and found high-arousal emotions (hot-anger, shame) were most reliably classified with F1 ≥ 0.40.
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Semantic Role Labeling with BERT</strong> — Constructed a PropBank-style semantic role labeling system treating SRL as a B-I-O sequence tagging problem, leveraging segment embeddings to encode predicate positions. Fine-tuned BERT for token-level classification with a custom head to predict semantic roles.
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="contact" class="section">
+                    <h1>Contact</h1>
+                    <p>Email: <a href="mailto:divya.ramesh@columbia.edu">divya.ramesh@columbia.edu</a></p>
+                    <p>LinkedIn: <a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener noreferrer">linkedin.com/in/your-handle</a></p>
+                    <p>GitHub: <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">github.com/your-username</a></p>
+                </section>
+            </div>
         </div>
-        <p>&copy; 2026 Divya Ramesh. All rights reserved.</p>
-    </footer>
+    </main>
 
     <script src="js/script.js"></script>
 </body>
